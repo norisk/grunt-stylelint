@@ -18,6 +18,12 @@ module.exports = function ( grunt ) {
 		} );
 		options.formatter = verbose ? 'verbose' : 'string';
 
+        if ( options.files.length == 0) {
+            grunt.log.ok("No files found");
+            done();
+            return;
+        }
+        
 		styleLint.lint( options ).then( function ( data ) {
 			if ( data.output ) {
 				if ( verbose ) {
@@ -29,7 +35,7 @@ module.exports = function ( grunt ) {
 				}
 			}
 
-            grunt.log.writeln("\Summary:".bold);
+            grunt.log.writeln("\nSummary:".bold);
 
             var files_errored = 0,
                 files_warned = 0,
