@@ -8,7 +8,9 @@ require( 'color' );
 module.exports = function ( grunt ) {
 
 	grunt.registerMultiTask( 'stylelint', function () {
-		var options = this.options(),
+		var options = this.options({
+                fail_on_warning:false
+            }),
 			done = this.async(),
 			styleLint = require( 'stylelint' ),
 			verbose = !!grunt.option( 'verbose' );
@@ -18,7 +20,7 @@ module.exports = function ( grunt ) {
 		} );
 		options.formatter = verbose ? 'verbose' : 'string';
 
-        if ( options.files.length == 0) {
+        if ( options.files.length === 0) {
             grunt.log.ok("No files found");
             done();
             return;
@@ -79,7 +81,7 @@ module.exports = function ( grunt ) {
             if (all_errors > 0) grunt.log.write(", "+(files_errored + " files failed with " + all_errors + " errors").red);
             if (all_warnings > 0) grunt.log.write(", "+(files_warned + " files warned with " + all_warnings + " warnings").yellow);
             grunt.log.writeln("");
-            if (data.errored) {
+            if (data.errored || ( options.fail_on_warning && all_warnings > 0 ) ) {
                 done( false );
             } else {
                 done();
