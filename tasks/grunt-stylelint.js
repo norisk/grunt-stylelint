@@ -55,6 +55,7 @@ module.exports = function ( grunt ) {
                             errors++;
                             break;
                         case "warn":
+                        case "warning":
                             all_warnings++;
                             warnings++;
                             break;
