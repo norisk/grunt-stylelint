@@ -1,5 +1,13 @@
 # grunt-stylelint Release History
 
+## v0.6.0 / 2016-07-29
+* Travis CI: Cache NPM modules (Stephen Edgar)
+* Travis CI: Test on latest Node.js v4.x.x and v6.x.x branches (Stephen Edgar)
+* Bump stylelint ^6.8.0 -> ^7.0.0 (Stephen Edgar)
+
+## v0.5.0 / 2016-07-01
+* Bump stylelint 6.5.1 -> ^6.8.0 (Radu Micu)
+
 ## v0.4.0 / 2016-06-07
 * Use default string formatter for output (Ed Sanders)
 * Use built-in verbose formatter (Ed Sanders)
